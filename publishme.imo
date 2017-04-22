@@ -11,6 +11,9 @@ void loop() {
         lastTime = now;
         // now is in milliseconds
         unsigned nowSec = now/1000UL;
+        unsigned sec = nowSec%60;
+        unsigned min = (nowSec%3600)/60;
+        unsigned hours = (nowSec%86400)/3600;
         sprintf(publishString,"%u:%u:%u",hours,min,sec);
         Spark.publish("Uptime",publishString);
     }
