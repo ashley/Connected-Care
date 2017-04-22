@@ -1,3 +1,6 @@
+// This #include statement was automatically added by the Particle IDE.
+#include "lib1.h"
+
 
 // -----------------------------------
 // Controlling LEDs over the Internet
@@ -7,12 +10,16 @@
 Same as in the Blink an LED example:
 led1 is D0, led2 is D7 */
 
-int led = D0;
-int buz = D1;
+int led = D6;
+int buz = D7;
 int vib = D2;
 int lse = A4;
 int but = D3;
 int analogvalue;
+int digitalvalue;
+int photoresistor = A0;
+
+int power = A5;
 
 // Last time, we only needed to declare pins in the setup function.
 // This time, we are also going to register our Particle function
@@ -25,8 +32,14 @@ void setup()
   pinMode(buz, OUTPUT);
   pinMode(vib, OUTPUT);
   pinMode(lse, INPUT);
-  pinMode( but , INPUT_PULLUP);
 
+  pinMode(photoresistor, INPUT);
+  pinMode(power, OUTPUT);
+  digitalWrite(power,HIGH);
+  pinMode( but , INPUT_PULLUP);
+    Particle.variable("analogvalue", &analogvalue, INT);
+
+    Particle.variable("digitalvalue", &digitalvalue, INT);
    // We are also going to declare a Particle.function so that we can turn the LED on and off from the cloud.
    Particle.function("led",ledToggle);
    // This is saying that when we ask the cloud for the function "led", it will employ the function ledToggle() from this app.
@@ -34,7 +47,7 @@ void setup()
    // For good measure, let's also make sure both LEDs are off when we start:
    digitalWrite(led, LOW);
 
-   Particle.variable("analogvalue", &analogvalue, INT);
+
 
 
 }
@@ -46,7 +59,9 @@ we don't actually need to put anything in the loop */
 
 void loop()
 {
-    analogvalue = analogRead(but);
+    analogvalue = analogRead(photoresistor);
+    Particle.publish(String(analogvalue));
+    digitalvalue = digitalRead(but);
 //    digitalWrite(led,HIGH);
       // find out if the button is pushed
    // or not by reading from it.
@@ -69,8 +84,8 @@ void loop()
   }else{
     // otherwise
     // turn the LED Off
-    digitalWrite( led, LOW);
-    analogWrite(buz, 0);
+//    digitalWrite( led, LOW);
+//    analogWrite(buz, 0);
 
   }
  // Particle.publish(led);

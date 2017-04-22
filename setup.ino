@@ -7,7 +7,7 @@
 Same as in the Blink an LED example:
 led1 is D0, led2 is D7 */
 
-int led1 = D0;
+int led1 = D6;
 int led2 = D7;
 
 // Last time, we only needed to declare pins in the setup function.
