@@ -10,6 +10,9 @@
 Same as in the Blink an LED example:
 led1 is D0, led2 is D7 */
 
+unsigned long lastTime = 0UL;
+char publishString[40];
+
 int led = D6;
 int buz = D7;
 int vib = D2;
