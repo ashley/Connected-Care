@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>Dynamic Stacked Bar Chart using d3.js</title>
+		<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+		<script src="demodata.json" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="app.js"></script> 
+		<script>
+		/*
+		$(document).ready(function(){
+		    $("button").click(function(){
+		        $.post("https://api.particle.io/v1/devices/1c003e000447353138383138/led?access_token=f002ebd44f47935f18cedf319fd1f657c3dd2c34",
+		        {
+		          arg: "on",
+		        },
+		        function(data,status){
+		            alert("Data: " + data + "\nStatus: " + status);
+		        });
+		    });
+		});*/
+		</script>
+		<style>
+			rect.a {
+				fill: green;
+			}
+			rect.b {
+				fill: orange;
+			}
+			rect.c {
+				fill: red;
+			}
+			#form{
+				visibility: hidden;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<span id="uptime"></span><br>
+    	<span id="tstamp"></span>
+
+    	<br><br>
+		<button onclick="start()">Enable</button>
+		<button onclick="demoStart()">Demo</button>
+		<button onclick="sendText()">SendText</button>
+		<p id="status"></p>
+		<div id="graph" class="aBarchart" style="width:1000px; height:200px;"></div>
+		<div id="form">
+		 <form action="https://api.particle.io/v1/devices/1c003e000447353138383138/led?access_token=f002ebd44f47935f18cedf319fd1f657c3dd2c34" method="POST">
+		    Tell your device what to do!<br>
+		    <br>
+		    <input id="on" type="radio" name="arg" value="on">Turn the LED on.
+		    <br>
+		    <input id="off"  type="radio" name="arg" value="off">Turn the LED off.
+		    <br>
+		    <input id="alert" name="alert1" type="submit" value="Do it!">
+		  </form>
+		  </div>
+		<script src="model.js" type="text/javascript"></script> 
+        
+    </body>
+</html>

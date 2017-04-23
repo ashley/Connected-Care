@@ -63,7 +63,7 @@ void loop()
         else{
         	sprintf(publishString,"Not Clicked and it's %f",nowSec, cTemp);
         }
-        Spark.publish("ButtonClick",publishString);
+        Spark.publish("publishString",publishString);
     }
 
     if( buttonValue == LOW )
