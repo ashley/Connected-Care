@@ -4,8 +4,41 @@
     padding: 10px;
 }
 
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+
+/* Change background color of buttons on hover */
+div.tab button:hover.img {
+    background-color: #D2D24B;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #D2D24B;
+}
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+
 h1{
 	font-family: 'Karla', sans-serif;
+}
+
+p{
+	font-family: 'Karla', sans-serif;
+}
 }
 
 #status{
@@ -43,7 +76,7 @@ button {
 }
 
 /* Custom */
-button {
+.options {
 	margin: 2% auto;
 	display: inline-block;
 	position: relative;
@@ -59,7 +92,7 @@ button {
 	color: white;
 }
 
-button:hover {
+.options:hover {
 	background-color: #86DA71;
 	border: 2px solid white;
 	color: #3B3B3B;
