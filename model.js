@@ -154,7 +154,7 @@ function demoStart() {
 		i++;
 		addData("graph", {"id":"v"+randomInt(150), "a":rawdata.a[i], "b":rawdata.a[i]+10, "c":rawdata.a[i]+20});
 		console.log(rawdata.a[i]+rawdata.b[i]+rawdata.c[i]);
-		if(rawdata.a[i]+rawdata.b[i]+rawdata.c[i] <=100){
+		if(rawdata.a[i]+rawdata.b[i]+rawdata.c[i] <=90){
 			document.getElementById("status").innerHTML = "Good";
 			document.getElementById("status").style.color = "Green";
 			console.log("Good");
