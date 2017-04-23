@@ -120,7 +120,7 @@ function start() {
 				var tsSpan   = document.getElementById("tstamp");
 				tempSpan.innerHTML = parsedData.data;
 				var arr = parsedData.data.split(', ');
-				click = parseFloat(arr[0]);
+				click = parseFloat(arr[2]);
 				temp = parseFloat(arr[1]);
 				tempSpan.style.fontSize = "28px";
 				tsSpan.innerHTML = "At timestamp " + parsedData.published_at;
@@ -164,6 +164,7 @@ function demoStart() {
 			document.forms["alert1"].submit();
 
 
+
 		}
 		else{
 			document.getElementById("status").innerHTML = "Not Good. In danger";
@@ -173,6 +174,7 @@ function demoStart() {
 			document.getElementById("off").checked = false;
 			document.getElementById("alert").submit();
 			document.forms["alert1"].submit();
+			document.getElementById("deleteButton").click();
 		}	
 				
 	}, 1000);
