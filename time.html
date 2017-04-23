@@ -10,8 +10,8 @@
     function start() {
 
         document.getElementById("uptime").innerHTML = "Waiting for data...";
-        var deviceID = "<<hex device id here>>";
-        var accessToken = "<<hex access token here>>";
+        var deviceID = "1c003e000447353138383138";
+        var accessToken = "f002ebd44f47935f18cedf319fd1f657c3dd2c34";
         var eventSource = new EventSource("https://api.spark.io/v1/devices/" + deviceID + "/events/?access_token=" + accessToken);
 
         eventSource.addEventListener('open', function(e) {

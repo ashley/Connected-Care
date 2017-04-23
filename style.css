@@ -1,0 +1,71 @@
+.container {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+h1{
+	font-family: 'Karla', sans-serif;
+}
+
+#status{
+	font-family: 'Karla', sans-serif;
+	font-size: 18pt;
+}
+
+rect.a {
+	fill: green;
+}
+rect.b {
+	fill: orange;
+}
+rect.c {
+	fill: red;
+}
+#form{
+	visibility: hidden;
+}
+
+h1{
+	font-size: 36pt;
+}
+
+#logo{
+	size: 10px;
+}
+button {
+  background: #86DA71;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+/* Custom */
+button {
+	margin: 2% auto;
+	display: inline-block;
+	position: relative;
+	padding: 1% 2%;
+	top: 0;
+	font-size: 100%;
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+	border-radius: 5px;
+	border: 2px solid #86DA71;
+	color: white;
+}
+
+button:hover {
+	background-color: #86DA71;
+	border: 2px solid white;
+	color: #3B3B3B;
+    transition: all 300ms ease;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+    transition-delay: initial;
+}

@@ -1,0 +1,94 @@
+#include "lib1.h"
+
+int led = D6;
+int buz = D7;
+int vib = D2;
+int lse = A4;
+int but = D3;
+
+int photoValue;
+int buttonValue;
+
+int photoresistor = A0;
+int power = A5;
+bool clicked = false;
+
+
+void setup()
+{
+   Serial.begin(9600);
+   
+   pinMode(led, OUTPUT);
+   pinMode(buz, OUTPUT);
+   pinMode(vib, OUTPUT);
+   pinMode(power, OUTPUT);
+   pinMode(lse, INPUT);
+   pinMode(photoresistor, INPUT);
+   pinMode(but, INPUT_PULLUP);
+
+   digitalWrite(power,HIGH);
+
+   Particle.variable("photoValue", &photoValue, INT);
+
+    Particle.variable("buttonValue", &buttonValue, INT);
+   // We are also going to declare a Particle.function so that we can turn the LED on and off from the cloud.
+   Particle.function("led",ledToggle);
+   // This is saying that when we ask the cloud for the function "led", it will employ the function ledToggle() from this app.
+
+   // For good measure, let's also make sure both LEDs are off when we start:
+   digitalWrite(led, LOW);
+}
+
+void loop()
+{
+    photoValue = analogRead(photoresistor);
+    Particle.publish(String(photoValue));
+
+    buttonValue = digitalRead(but);
+
+  if( buttonValue == LOW )
+  {
+  	clicked = true;
+    Particle.publish("pushed");
+    digitalWrite( led, HIGH);
+    analogWrite(buz, 90);
+  }
+  else{
+  	clicked = false;
+  }
+
+  unsigned long now = millis();
+    //Every 15 seconds publish uptime
+    if (now-lastTime>5000UL) {
+        lastTime = now;
+        // now is in milliseconds
+        unsigned nowSec = now/1000UL;
+        if (clicked){
+        	sprintf(publishString,"Clicked, %u",sec);
+        	
+        }
+        else{
+        	sprintf(publishString,"Not Clicked, %u",sec);
+        }
+        Spark.publish("ButtonClick",publishString);
+    }
+}
+
+int ledToggle(String command) {
+
+    if (command=="on") {
+        digitalWrite(led,HIGH);
+        return 1;
+    }
+    else if (command=="off") {
+        digitalWrite(led,LOW);
+        return 0;
+    }
+    else {
+        return -1;
+    }
+}
+
+
+
+
